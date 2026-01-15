@@ -26,7 +26,7 @@ const Sidebar: React.FC = () => {
       </div>
       
       <div className="text-[10px] font-mono text-stone-500 mb-2">
-        ©24
+        ©{new Date().getFullYear()}
       </div>
     </aside>
   );

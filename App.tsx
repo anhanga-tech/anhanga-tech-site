@@ -5,6 +5,48 @@ import GridCard from './components/GridCard';
 import { ArrowUpRight, MoveRight, CheckCircle2, Send, Terminal, Cpu, Network, Database, Bot, Instagram, Linkedin, Mail, Loader2, AlertCircle, Lightbulb, Users, GraduationCap, Sparkles, LifeBuoy, Workflow, Zap } from 'lucide-react';
 import { ServiceCardProps } from './types';
 
+// Static Data Definitions
+const serviceCards: ServiceCardProps[] = [
+  { 
+    title: "Business Intelligence", 
+    description: "PowerBI • Looker", 
+    image: "https://picsum.photos/seed/dash1/800/600",
+    variant: 'light'
+  },
+  { 
+    title: "Automação de Marketing", 
+    description: "Zapier • n8n", 
+    image: "https://picsum.photos/seed/dash2/800/600",
+    variant: 'dark'
+  },
+  { 
+    title: "Integração CRM", 
+    description: "Salesforce • HubSpot", 
+    image: "https://picsum.photos/seed/crm/800/600",
+    variant: 'green'
+  },
+  { 
+    title: "Bots Inteligentes", 
+    description: "WhatsApp • Telegram", 
+    image: "https://picsum.photos/seed/bots/800/600",
+    variant: 'lime'
+  }
+];
+
+const plans = [
+  { name: "Consultoria Pontual", icon: Lightbulb },
+  { name: "Squads de Automação", icon: Users },
+  { name: "Treinamento de Equipes", icon: GraduationCap },
+  { name: "Implementação de IA", icon: Sparkles },
+  { name: "Suporte Contínuo", icon: LifeBuoy }
+];
+
+const methodologySteps = [
+  { id: "01", title: "Diagnóstico de Processos", desc: "Mapeamento completo dos gargalos operacionais da sua empresa com entrega de roadmap de automação." },
+  { id: "02", title: "Implementação de CRM", desc: "Configuração avançada de Pipedrive, HubSpot ou Salesforce integrada ao seu WhatsApp e Email." },
+  { id: "03", title: "Dashboards Executivos", desc: "Visualização de dados em tempo real para tomada de decisão baseada em fatos, não em intuição." }
+];
+
 const App: React.FC = () => {
   // Newsletter State
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -80,41 +122,6 @@ const App: React.FC = () => {
       setTimeout(() => setContactStatus('idle'), 5000);
     }, 1500);
   };
-
-  const serviceCards: ServiceCardProps[] = [
-    { 
-      title: "Business Intelligence", 
-      description: "PowerBI • Looker", 
-      image: "https://picsum.photos/seed/dash1/800/600",
-      variant: 'light'
-    },
-    { 
-      title: "Automação de Marketing", 
-      description: "Zapier • n8n", 
-      image: "https://picsum.photos/seed/dash2/800/600",
-      variant: 'dark'
-    },
-    { 
-      title: "Integração CRM", 
-      description: "Salesforce • HubSpot", 
-      image: "https://picsum.photos/seed/crm/800/600",
-      variant: 'green'
-    },
-    { 
-      title: "Bots Inteligentes", 
-      description: "WhatsApp • Telegram", 
-      image: "https://picsum.photos/seed/bots/800/600",
-      variant: 'lime'
-    }
-  ];
-
-  const plans = [
-    { name: "Consultoria Pontual", icon: Lightbulb },
-    { name: "Squads de Automação", icon: Users },
-    { name: "Treinamento de Equipes", icon: GraduationCap },
-    { name: "Implementação de IA", icon: Sparkles },
-    { name: "Suporte Contínuo", icon: LifeBuoy }
-  ];
 
   return (
     <div className="min-h-screen bg-anhanga-stone pl-12 md:pl-16 selection:bg-anhanga-lime selection:text-anhanga-dark relative overflow-hidden">
@@ -444,11 +451,7 @@ const App: React.FC = () => {
 
             <div className="md:col-span-7 flex flex-col justify-center">
               <div className="divide-y divide-stone-200">
-                 {[
-                   { id: "01", title: "Diagnóstico de Processos", desc: "Mapeamento completo dos gargalos operacionais da sua empresa com entrega de roadmap de automação." },
-                   { id: "02", title: "Implementação de CRM", desc: "Configuração avançada de Pipedrive, HubSpot ou Salesforce integrada ao seu WhatsApp e Email." },
-                   { id: "03", title: "Dashboards Executivos", desc: "Visualização de dados em tempo real para tomada de decisão baseada em fatos, não em intuição." }
-                 ].map((service, i) => (
+                 {methodologySteps.map((service, i) => (
                    <div key={i} className="py-10 group hover:bg-stone-50 transition-colors -mx-4 px-4 rounded-2xl cursor-pointer">
                       <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
                          <div className="flex items-center gap-3">

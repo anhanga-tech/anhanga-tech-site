@@ -10,6 +10,7 @@
     <meta name="keywords" content="automação, business intelligence, crm, chatbot, ia, low-code, anhangá, tecnologia" />
     <meta name="author" content="Anhangá Tech" />
     <meta name="theme-color" content="#d9f99d" />
+    <link rel="canonical" href="https://anhanga.tech/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -93,6 +94,44 @@
       .text-outline {
         -webkit-text-stroke: 1px #1c1917;
         color: transparent;
+      }
+
+      /* Respect user's motion preferences for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .animate-marquee,
+        .animate-blob,
+        .animate-spin-slow,
+        .animate-pulse {
+          animation: none !important;
+        }
+      }
+
+      /* Enhanced focus indicators for accessibility */
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 3px solid #d9f99d;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* Remove default outline but keep for focus-visible */
+      a:focus,
+      button:focus,
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
       }
     </style>
   <script type="importmap">

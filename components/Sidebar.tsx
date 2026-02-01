@@ -9,9 +9,9 @@ const Sidebar: React.FC = () => {
           <Menu size={24} />
         </button>
         <div className="flex flex-col gap-6 text-stone-400">
-          <a href="#" className="hover:text-anhanga-lime transition-colors"><Instagram size={20} /></a>
-          <a href="#" className="hover:text-anhanga-lime transition-colors"><Linkedin size={20} /></a>
-          <a href="#" className="hover:text-anhanga-lime transition-colors"><Mail size={20} /></a>
+          <a href="#" className="p-3 hover:text-anhanga-lime transition-colors hover:bg-stone-800 rounded-lg" aria-label="Instagram"><Instagram size={20} /></a>
+          <a href="#" className="p-3 hover:text-anhanga-lime transition-colors hover:bg-stone-800 rounded-lg" aria-label="LinkedIn"><Linkedin size={20} /></a>
+          <a href="#" className="p-3 hover:text-anhanga-lime transition-colors hover:bg-stone-800 rounded-lg" aria-label="Email"><Mail size={20} /></a>
         </div>
       </div>
 

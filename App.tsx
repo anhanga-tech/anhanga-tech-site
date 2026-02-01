@@ -143,9 +143,10 @@ const App: React.FC = () => {
           {/* Row 1, Col 1: Interior Image */}
           <div className="lg:col-span-4 h-[300px] lg:h-[450px]">
             <GridCard className="h-full group p-0 relative">
-              <img 
-                src="https://picsum.photos/seed/office1/1000/1000" 
-                alt="Tech Office" 
+              <img
+                src="https://picsum.photos/seed/office1/1000/1000"
+                alt="Tech Office"
+                loading="lazy"
                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-105"
               />
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
@@ -227,9 +228,10 @@ const App: React.FC = () => {
           {/* Row 2, Col 3: Detail Image - Adjusted span */}
           <div className="lg:col-span-5 h-[250px] lg:h-[280px]">
              <GridCard className="h-full p-0">
-               <img 
-                src="https://picsum.photos/seed/tech3/800/1000" 
-                alt="Detail" 
+               <img
+                src="https://picsum.photos/seed/tech3/800/1000"
+                alt="Detail"
+                loading="lazy"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-6">
@@ -249,9 +251,10 @@ const App: React.FC = () => {
           {/* Left Large Image */}
           <div className="md:col-span-1 lg:col-span-7 h-full min-h-[400px]">
             <GridCard className="h-full relative group">
-               <img 
-                src="https://picsum.photos/seed/coding/1200/800" 
-                alt="Workspace" 
+               <img
+                src="https://picsum.photos/seed/coding/1200/800"
+                alt="Workspace"
+                loading="lazy"
                 className="w-full h-full object-cover grayscale opacity-90 group-hover:opacity-100 transition-opacity"
               />
               <div className="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent w-full">
@@ -282,7 +285,7 @@ const App: React.FC = () => {
                   </div>
                </GridCard>
                <GridCard className="bg-white flex items-center justify-center relative overflow-hidden group">
-                  <img src="https://picsum.photos/seed/arch/400/400" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Detail" />
+                  <img src="https://picsum.photos/seed/arch/400/400" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Detail" />
                </GridCard>
             </div>
           </div>
@@ -333,9 +336,10 @@ const App: React.FC = () => {
 
           <div className="md:col-span-1 lg:col-span-8 h-full min-h-[450px]">
             <GridCard className="h-full">
-              <img 
-                src="https://picsum.photos/seed/meeting/1600/1000" 
-                alt="Meeting" 
+              <img
+                src="https://picsum.photos/seed/meeting/1600/1000"
+                alt="Meeting"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-6 right-6 bg-white px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider shadow-lg">
@@ -394,7 +398,7 @@ const App: React.FC = () => {
                       <h3 className={`text-5xl md:text-7xl font-display font-black uppercase leading-[0.8] tracking-tighter mb-6 ${currentStyle.title} group-hover:translate-x-2 transition-transform duration-500`}>
                         {card.title}
                       </h3>
-                      <button className={`w-14 h-14 flex items-center justify-center rounded-full transition-all ${currentStyle.btn} group-hover:scale-110`}>
+                      <button className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center rounded-full transition-all ${currentStyle.btn} group-hover:scale-110`} aria-label={`Ver mais sobre ${card.title}`}>
                         <ArrowUpRight size={24} />
                       </button>
                     </div>
@@ -403,7 +407,7 @@ const App: React.FC = () => {
                  {/* Bottom Image Section */}
                  <div className="h-64 w-full overflow-hidden relative">
                    {card.image && (
-                     <img src={card.image} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" alt={card.title} />
+                     <img src={card.image} loading="lazy" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out" alt={card.title} />
                    )}
                  </div>
               </GridCard>
@@ -473,7 +477,7 @@ const App: React.FC = () => {
                     <span>Solicitar Orçamento</span>
                     <div className="w-2 h-2 bg-anhanga-lime rounded-full group-hover:scale-150 transition-transform"></div>
                  </button>
-                 <button className="w-16 h-16 rounded-full bg-anhanga-green text-white flex items-center justify-center hover:bg-green-800 transition-colors group">
+                 <button className="w-16 h-16 rounded-full bg-anhanga-green text-white flex items-center justify-center hover:bg-green-800 transition-colors group" aria-label="Ver mais serviços">
                     <MoveRight className="group-hover:translate-x-1 transition-transform" />
                  </button>
               </div>
@@ -532,13 +536,13 @@ const App: React.FC = () => {
         {/* GALLERY GRID */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-16">
            <GridCard className="aspect-square group overflow-hidden">
-             <img src="https://picsum.photos/seed/desk/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Work" />
+             <img src="https://picsum.photos/seed/desk/800/800" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Work" />
            </GridCard>
            <GridCard className="aspect-square group overflow-hidden">
-             <img src="https://picsum.photos/seed/light/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Idea" />
+             <img src="https://picsum.photos/seed/light/800/800" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Idea" />
            </GridCard>
            <GridCard className="aspect-square relative group overflow-hidden bg-anhanga-dark">
-             <img src="https://picsum.photos/seed/wood/800/800" className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500" alt="Detail" />
+             <img src="https://picsum.photos/seed/wood/800/800" loading="lazy" className="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500" alt="Detail" />
              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
                 <p className="font-display text-3xl md:text-4xl font-black text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-500 uppercase tracking-tighter leading-none">Design Thinking<br/><span className="text-anhanga-accent">x</span><br/>Tecnologia</p>
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
@@ -729,13 +733,13 @@ const App: React.FC = () => {
                    hello@anhanga.tech
                  </a>
                  <div className="flex gap-4 pt-2">
-                    <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all">
+                    <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="Instagram">
                       <Instagram size={18} />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all">
+                    <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="LinkedIn">
                       <Linkedin size={18} />
                     </a>
-                    <a href="#" className="w-10 h-10 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all">
+                    <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="Email">
                       <Mail size={18} />
                     </a>
                  </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Marquee from '../components/Marquee';
 import GridCard from '../components/GridCard';
 import { InstagramIcon, LinkedinIcon } from '../components/BrandIcons';

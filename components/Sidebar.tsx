@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import { Menu, X, Mail } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon } from './BrandIcons';
 import { NavItem } from '../types';

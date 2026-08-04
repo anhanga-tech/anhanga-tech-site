@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Marquee from './components/Marquee';
 import GridCard from './components/GridCard';
-import { ArrowUpRight, MoveRight, CheckCircle2, Send, Terminal, Cpu, Network, Database, Bot, Instagram, Linkedin, Mail, Loader2, AlertCircle, Lightbulb, Users, GraduationCap, Sparkles, LifeBuoy, Workflow, Zap } from 'lucide-react';
+import { InstagramIcon, LinkedinIcon } from './components/BrandIcons';
+import { ArrowUpRight, MoveRight, CheckCircle2, Send, Terminal, Cpu, Network, Database, Bot, Mail, Loader2, AlertCircle, Lightbulb, Users, GraduationCap, Sparkles, LifeBuoy, Workflow, Zap } from 'lucide-react';
 import { ServiceCardProps } from './types';
 
 // Static Data Definitions
@@ -734,10 +735,10 @@ const App: React.FC = () => {
                  </a>
                  <div className="flex gap-4 pt-2">
                     <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="Instagram">
-                      <Instagram size={18} />
+                      <InstagramIcon size={18} />
                     </a>
                     <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="LinkedIn">
-                      <Linkedin size={18} />
+                      <LinkedinIcon size={18} />
                     </a>
                     <a href="#" className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center hover:bg-anhanga-lime hover:text-anhanga-dark transition-all" aria-label="Email">
                       <Mail size={18} />

@@ -1,0 +1,14 @@
+dependencies:
+  - package.json
+  - pnpm-lock.yaml
+  - pnpm-workspace.yaml
+
+infra:
+  - .github/**/*
+  - vite.config.ts
+  - tailwind.config.js
+  - postcss.config.js
+  - tsconfig.json
+
+documentation:
+  - '**/*.md'

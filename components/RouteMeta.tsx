@@ -35,17 +35,19 @@ const RouteMeta: React.FC = () => {
   useEffect(() => {
     const normalizedPath = normalizePath(location.pathname);
     const current = NAV_ITEMS.find(item => item.href === normalizedPath);
-    const isKnownRoute = normalizedPath === '/' || Boolean(current);
+    const isKnownRoute = Boolean(current);
+    const isIndexable = Boolean(current?.implemented);
 
     document.title = !isKnownRoute
       ? `Página não encontrada | ${SITE_TITLE}`
-      : current && current.href !== '/'
-        ? `${current.label} | ${SITE_TITLE}`
+      : current!.href !== '/'
+        ? `${current!.label} | ${SITE_TITLE}`
         : `${SITE_TITLE} | ${SITE_TAGLINE}`;
 
-    // Unknown routes (soft 404s served by the SPA fallback) must not
-    // self-canonicalize or be indexed — point crawlers back at the home page instead.
-    getOrCreateMeta('robots').content = isKnownRoute ? 'index, follow' : 'noindex, follow';
+    // Unknown routes (soft 404s served by the SPA fallback) and routes that still
+    // render PlaceholderPage must not self-canonicalize or be indexed as thin
+    // "Em construção" landing pages — point crawlers back at the home page instead.
+    getOrCreateMeta('robots').content = isIndexable ? 'index, follow' : 'noindex, follow';
     getOrCreateCanonical().href = isKnownRoute ? `${BASE_URL}${normalizedPath}` : BASE_URL;
   }, [location.pathname]);
 

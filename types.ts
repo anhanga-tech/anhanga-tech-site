@@ -9,4 +9,6 @@ export interface ServiceCardProps {
 export interface NavItem {
   label: string;
   href: string;
+  /** Whether this route has real content yet (vs. rendering PlaceholderPage). Defaults to false. */
+  implemented?: boolean;
 }

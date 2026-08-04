@@ -5,7 +5,7 @@ import { InstagramIcon, LinkedinIcon } from './BrandIcons';
 import { NavItem } from '../types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Início', href: '/' },
+  { label: 'Início', href: '/', implemented: true },
   { label: 'Atendente IA', href: '/atendente-ia' },
   { label: 'Agendamento', href: '/agendamento' },
   { label: 'Painel', href: '/painel' },

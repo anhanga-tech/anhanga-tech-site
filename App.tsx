@@ -18,6 +18,10 @@ const App: React.FC = () => {
               element={<PlaceholderPage title={item.label} description="Esta página está sendo construída. Em breve você encontrará aqui todo o conteúdo sobre este tema." />}
             />
           ))}
+          <Route
+            path="*"
+            element={<PlaceholderPage title="Página não encontrada" description="O endereço que você tentou acessar não existe. Confira o link ou volte para o início." />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>

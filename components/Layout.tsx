@@ -1,10 +1,12 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import RouteMeta from './RouteMeta';
 
 const Layout: React.FC = () => {
   return (
     <div className="min-h-screen bg-anhanga-stone pl-12 md:pl-16 selection:bg-anhanga-lime selection:text-anhanga-dark relative overflow-hidden">
+      <RouteMeta />
 
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 z-0 pointer-events-none">

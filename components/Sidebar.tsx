@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon } from './BrandIcons';
@@ -19,12 +19,55 @@ export const NAV_ITEMS: NavItem[] = [
 const Sidebar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const nav = navRef.current;
+    const focusableSelector = 'a[href], button:not([disabled])';
+    const firstFocusable = nav?.querySelector<HTMLElement>(focusableSelector);
+    firstFocusable?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !nav) return;
+
+      const focusable = Array.from(nav.querySelectorAll<HTMLElement>(focusableSelector));
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      menuButtonRef.current?.focus();
+    };
+  }, [isMenuOpen]);
+
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
       <aside className="fixed left-0 top-0 h-full w-12 md:w-16 bg-anhanga-dark text-white flex flex-col items-center justify-between py-8 z-50 border-r border-stone-800">
         <div className="flex flex-col gap-8 items-center">
           <button
+            ref={menuButtonRef}
             onClick={() => setIsMenuOpen(true)}
             className="p-2 hover:bg-stone-800 rounded-lg transition-colors"
             aria-label="Abrir menu de navegação"
@@ -42,7 +85,7 @@ const Sidebar: React.FC = () => {
         <div className="flex-1 w-full relative">
           {/* Rotated Logo Container */}
           {/* We use origin-left to anchor the start of the logo to the bottom area and rotate it upwards */}
-          <Link to="/">
+          <Link to="/" onClick={handleLogoClick}>
             <img
                src="https://i.postimg.cc/ZqZDHWR8/6.png"
                alt="Anhangá Tech"
@@ -63,7 +106,13 @@ const Sidebar: React.FC = () => {
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setIsMenuOpen(false)}
           />
-          <nav className="relative w-full max-w-sm bg-anhanga-dark text-white h-full ml-12 md:ml-16 p-8 md:p-10 flex flex-col border-r border-stone-800">
+          <nav
+            ref={navRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navegação"
+            className="relative w-full max-w-sm bg-anhanga-dark text-white h-full ml-12 md:ml-16 p-8 md:p-10 flex flex-col border-r border-stone-800 overflow-y-auto"
+          >
             <div className="flex justify-between items-center mb-12">
               <span className="font-mono text-xs uppercase tracking-widest text-stone-500">Navegação</span>
               <button
@@ -74,7 +123,7 @@ const Sidebar: React.FC = () => {
                 <X size={22} />
               </button>
             </div>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-2 pb-8">
               {NAV_ITEMS.map((item) => {
                 const isActive = location.pathname === item.href;
                 return (

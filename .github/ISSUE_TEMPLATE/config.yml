@@ -1,0 +1,4 @@
+blank_issues_enabled: false
+# Repo pequeno, sem Discussions habilitado.
+# blank_issues_enabled: false força o uso de um dos formulários (Issue Forms),
+# o que mantém issues abertas por humanos OU agentes/LLMs dentro do mesmo padrão.

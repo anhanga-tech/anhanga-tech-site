@@ -1,6 +1,60 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-logo: "MuseoModerno", sans-serif;
+
+  --color-anhanga-green: #064e3b;
+  --color-anhanga-lime: #d9f99d;
+  --color-anhanga-stone: #f5f5f4;
+  --color-anhanga-dark: #1c1917;
+  --color-anhanga-accent: #f97316;
+
+  --animate-spin-slow: spin 12s linear infinite;
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-blob: blob 10s infinite;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+}
+
+@layer components {
+  .grid-card {
+    background-color: var(--color-white);
+    color: var(--color-anhanga-dark);
+  }
+
+  .grid-card--dark {
+    background-color: var(--color-anhanga-dark);
+    color: var(--color-white);
+  }
+}
 
 .animation-delay-2000 {
   animation-delay: 2s;

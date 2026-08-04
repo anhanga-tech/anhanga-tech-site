@@ -1,0 +1,55 @@
+name: ⚙️ Configuração / Infra
+description: Ajustes de build, CI, deploy ou ferramental do projeto
+title: "[INFRA] "
+labels: ["infra"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Preencha com informação real — não deixe placeholders.**
+        Deploy: **Cloudflare Pages** (integração Git nativa, sem workflow de deploy no Actions).
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: O que precisa ser configurado ou ajustado, e por que agora?
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de configuração
+      multiple: true
+      options:
+        - Build / bundler (Vite, Tailwind, TypeScript)
+        - Gerenciador de pacotes (pnpm)
+        - GitHub Actions / CI
+        - Cloudflare Pages (deploy, domínio)
+        - Dependabot
+        - Outro
+    validations:
+      required: true
+  - type: textarea
+    id: checklist
+    attributes:
+      label: Checklist de implementação
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+    validations:
+      required: true
+  - type: textarea
+    id: riscos
+    attributes:
+      label: Impacto e riscos
+      description: O que pode ser afetado? Precisa atualizar o README?
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Nenhum secret/token foi colado no corpo desta issue.
+          required: true

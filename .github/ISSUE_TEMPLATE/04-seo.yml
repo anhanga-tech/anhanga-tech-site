@@ -1,0 +1,59 @@
+name: 🔍 SEO
+description: SEO técnico ou on-page (palavra-chave alvo, meta tags, schema, landing page vertical)
+title: "[SEO] "
+labels: ["seo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Preencha com dados reais.** Sempre que possível, cite a fonte do dado de palavra-chave (pesquisa OpenSEO, data).
+  - type: textarea
+    id: objetivo
+    attributes:
+      label: Objetivo
+      description: O que precisa ser criado/melhorado, e para qual palavra-chave alvo?
+    validations:
+      required: true
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo de SEO
+      multiple: true
+      options:
+        - Nova página vertical (segmento de negócio)
+        - Técnico (sitemap, robots.txt, canonical, meta tags)
+        - On-page (title, meta description, headings, alt text)
+        - Structured Data (Schema JSON-LD)
+        - Conteúdo (Materiais / blog)
+    validations:
+      required: true
+  - type: textarea
+    id: keyword
+    attributes:
+      label: Palavra-chave alvo e dado de volume
+      description: Termo, volume/mês e dificuldade, se já pesquisado.
+    validations:
+      required: true
+  - type: textarea
+    id: paginas
+    attributes:
+      label: Página(s) / rota(s) afetada(s)
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceitação
+      value: |
+        - [ ] Palavra-chave alvo presente no H1/title/meta description
+        - [ ] Conteúdo condiz com as decisões de produto/preço registradas
+        - [ ] Sem duplicar intenção com outra página existente
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Preenchi os campos com informações reais (sem placeholders).
+          required: true

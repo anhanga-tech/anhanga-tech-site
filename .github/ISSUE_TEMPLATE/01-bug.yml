@@ -1,0 +1,83 @@
+name: 🐛 Bug
+description: Reportar um comportamento inesperado
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar. **Preencha cada campo com informação real — não deixe placeholders nem texto genérico.**
+        Issues abertas por agentes/LLMs devem seguir a mesma regra: descreva o que foi de fato observado.
+  - type: textarea
+    id: descricao
+    attributes:
+      label: Descrição do bug
+      description: O que está acontecendo de errado? Seja específico e objetivo.
+    validations:
+      required: true
+  - type: textarea
+    id: reproducao
+    attributes:
+      label: Como reproduzir
+      description: Passo a passo mínimo para reproduzir.
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: true
+  - type: textarea
+    id: esperado-vs-atual
+    attributes:
+      label: Comportamento esperado vs. atual
+      description: O que deveria acontecer e o que acontece de fato.
+    validations:
+      required: true
+  - type: textarea
+    id: evidencias
+    attributes:
+      label: Evidências
+      description: Prints, vídeos ou mensagens do console. Cole logs em bloco de código.
+    validations:
+      required: false
+  - type: dropdown
+    id: area
+    attributes:
+      label: Área afetada
+      multiple: true
+      options:
+        - Frontend (React / Vite / Tailwind)
+        - Build / CI
+        - Cloudflare Pages (deploy)
+        - SEO / meta tags
+        - Conteúdo / copy
+        - Outro
+    validations:
+      required: true
+  - type: dropdown
+    id: ambiente
+    attributes:
+      label: Ambiente
+      multiple: true
+      options:
+        - Produção (Cloudflare Pages)
+        - Preview (Cloudflare Pages)
+        - Local (pnpm dev)
+    validations:
+      required: true
+  - type: input
+    id: navegador-dispositivo
+    attributes:
+      label: Navegador / dispositivo
+      description: Ex.- Chrome 126 desktop, Safari iOS 17 mobile.
+    validations:
+      required: false
+  - type: checkboxes
+    id: confirmacao
+    attributes:
+      label: Confirmação
+      options:
+        - label: Busquei por issues abertas semelhantes antes de criar esta.
+          required: true
+        - label: Preenchi os campos com informações reais (sem placeholders).
+          required: true

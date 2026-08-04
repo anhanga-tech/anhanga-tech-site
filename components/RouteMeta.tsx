@@ -6,8 +6,13 @@ const SITE_TITLE = 'Anhangá Tech';
 const SITE_TAGLINE = 'Automação de Negócios';
 const BASE_URL = 'https://anhanga.tech';
 
-const normalizePath = (pathname: string): string =>
-  pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+// Routes match case-insensitively (React Router's default), so metadata
+// lookup must normalize casing the same way or it misclassifies valid
+// URLs like /Precos as unknown.
+const normalizePath = (pathname: string): string => {
+  const trimmed = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname;
+  return trimmed.toLowerCase();
+};
 
 const getOrCreateMeta = (name: string): HTMLMetaElement => {
   let meta = document.querySelector<HTMLMetaElement>(`meta[name="${name}"]`);

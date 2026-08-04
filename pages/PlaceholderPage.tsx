@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Construction } from 'lucide-react';
+import { ArrowUpRight, Construction, SearchX } from 'lucide-react';
 
 interface PlaceholderPageProps {
   title: string;
   description: string;
+  /** 'placeholder' (default): route exists but content is coming soon. 'not-found': URL doesn't match any route. */
+  variant?: 'placeholder' | 'not-found';
 }
 
-const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, description }) => {
+const PlaceholderPage: React.FC<PlaceholderPageProps> = ({ title, description, variant = 'placeholder' }) => {
+  const isNotFound = variant === 'not-found';
+
   return (
     <div className="min-h-[70vh] flex items-center justify-center">
       <div className="bg-white rounded-3xl border border-stone-800 p-8 md:p-16 max-w-2xl w-full text-center shadow-sm">
         <div className="w-16 h-16 mx-auto mb-8 rounded-full bg-anhanga-lime flex items-center justify-center">
-          <Construction size={28} className="text-anhanga-dark" />
+          {isNotFound ? <SearchX size={28} className="text-anhanga-dark" /> : <Construction size={28} className="text-anhanga-dark" />}
         </div>
         <span className="inline-block px-3 py-1 rounded-full bg-stone-100 border border-stone-200 text-[10px] font-bold uppercase tracking-widest mb-6">
-          Em construção
+          {isNotFound ? '404' : 'Em construção'}
         </span>
         <h1 className="text-5xl md:text-7xl font-display font-black uppercase tracking-tighter leading-[0.85] mb-6 text-anhanga-dark">
           {title}

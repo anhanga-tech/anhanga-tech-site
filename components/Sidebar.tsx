@@ -85,11 +85,15 @@ const Sidebar: React.FC = () => {
         <div className="flex-1 w-full relative">
           {/* Rotated Logo Container */}
           {/* We use origin-left to anchor the start of the logo to the bottom area and rotate it upwards */}
-          <Link to="/" onClick={handleLogoClick}>
+          <Link
+            to="/"
+            onClick={handleLogoClick}
+            className="absolute bottom-32 left-1/2 -translate-y-1/2 origin-left -rotate-90 w-32 md:w-48 block rounded"
+          >
             <img
                src="https://i.postimg.cc/ZqZDHWR8/6.png"
                alt="Anhangá Tech"
-               className="absolute bottom-32 left-1/2 -translate-y-1/2 origin-left -rotate-90 w-32 md:w-48 max-w-none object-contain hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer select-none"
+               className="w-full max-w-none object-contain hover:opacity-80 hover:scale-110 transition-all duration-300 cursor-pointer select-none"
             />
           </Link>
         </div>

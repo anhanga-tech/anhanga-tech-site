@@ -20,7 +20,7 @@ const App: React.FC = () => {
           ))}
           <Route
             path="*"
-            element={<PlaceholderPage title="Página não encontrada" description="O endereço que você tentou acessar não existe. Confira o link ou volte para o início." />}
+            element={<PlaceholderPage variant="not-found" title="Página não encontrada" description="O endereço que você tentou acessar não existe. Confira o link ou volte para o início." />}
           />
         </Route>
       </Routes>

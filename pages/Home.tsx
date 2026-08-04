@@ -689,7 +689,7 @@ const Home: React.FC = () => {
          <div className="md:col-span-2 md:col-start-6">
             <h4 className="text-white font-mono text-sm uppercase tracking-widest mb-6">Quick Links</h4>
             <ul className="space-y-3 text-stone-400 text-sm">
-              <li><Link to="/" className="hover:text-anhanga-lime transition-colors">Home</Link></li>
+              <li><Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-anhanga-lime transition-colors">Home</Link></li>
               <li><Link to="/sobre" className="hover:text-anhanga-lime transition-colors">Sobre</Link></li>
               <li><a href="#" className="hover:text-anhanga-lime transition-colors">Cases</a></li>
               <li><a href="#" className="hover:text-anhanga-lime transition-colors">Carreiras</a></li>

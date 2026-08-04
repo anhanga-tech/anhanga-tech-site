@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { NAV_ITEMS } from './Sidebar';
 
 const SITE_TITLE = 'Anhangá Tech';

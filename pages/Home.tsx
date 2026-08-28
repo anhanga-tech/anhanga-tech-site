@@ -5,6 +5,7 @@ import GridCard from '../components/GridCard';
 import { InstagramIcon, LinkedinIcon } from '../components/BrandIcons';
 import { ArrowUpRight, MoveRight, CheckCircle2, Send, Cpu, Network, Bot, Mail, Loader2, AlertCircle, Lightbulb, Users, GraduationCap, Sparkles, LifeBuoy, Workflow } from 'lucide-react';
 import { ServiceCardProps } from '../types';
+import type { NavigationPage } from '../site/siteCatalog';
 
 // Static Data Definitions
 const serviceCards: ServiceCardProps[] = [
@@ -48,7 +49,12 @@ const methodologySteps = [
   { id: "03", title: "Dashboards Executivos", desc: "Visualização de dados em tempo real para tomada de decisão baseada em fatos, não em intuição." }
 ];
 
-const Home: React.FC = () => {
+interface HomeProps {
+  footerQuickPages: readonly NavigationPage[];
+  footerOfferPages: readonly NavigationPage[];
+}
+
+const Home: React.FC<HomeProps> = ({ footerQuickPages, footerOfferPages }) => {
   // Newsletter State
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -689,8 +695,9 @@ const Home: React.FC = () => {
          <div className="md:col-span-2 md:col-start-6">
             <h4 className="text-white font-mono text-sm uppercase tracking-widest mb-6">Quick Links</h4>
             <ul className="space-y-3 text-stone-400 text-sm">
-              <li><Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-anhanga-lime transition-colors">Home</Link></li>
-              <li><Link to="/sobre" className="hover:text-anhanga-lime transition-colors">Sobre</Link></li>
+              {footerQuickPages.map(page => (
+                <li key={page.path}><Link to={page.path} onClick={() => page.path === '/' && window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-anhanga-lime transition-colors">{page.label}</Link></li>
+              ))}
               <li><a href="#" className="hover:text-anhanga-lime transition-colors">Cases</a></li>
               <li><a href="#" className="hover:text-anhanga-lime transition-colors">Carreiras</a></li>
               <li><a href="#" className="hover:text-anhanga-lime transition-colors">Sitemap</a></li>
@@ -701,11 +708,9 @@ const Home: React.FC = () => {
          <div className="md:col-span-3">
             <h4 className="text-white font-mono text-sm uppercase tracking-widest mb-6">Services</h4>
             <ul className="space-y-3 text-stone-400 text-sm">
-              <li><Link to="/atendente-ia" className="hover:text-anhanga-lime transition-colors">Atendente IA</Link></li>
-              <li><Link to="/agendamento" className="hover:text-anhanga-lime transition-colors">Agendamento</Link></li>
-              <li><Link to="/painel" className="hover:text-anhanga-lime transition-colors">Painel</Link></li>
-              <li><Link to="/precos" className="hover:text-anhanga-lime transition-colors">Preços</Link></li>
-              <li><Link to="/consultoria" className="hover:text-anhanga-lime transition-colors">Consultoria de IA</Link></li>
+              {footerOfferPages.map(page => (
+                <li key={page.path}><Link to={page.path} className="hover:text-anhanga-lime transition-colors">{page.label}</Link></li>
+              ))}
             </ul>
          </div>
 

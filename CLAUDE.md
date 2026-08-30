@@ -14,11 +14,12 @@ Gerenciador de pacotes: **pnpm** (via `corepack enable`). Node 24.
 
 - `pnpm install` — instalar dependências
 - `pnpm dev` — servidor de desenvolvimento (porta 3000, `host: 0.0.0.0`)
+- `pnpm test` — testes do catálogo de páginas com Vitest
 - `pnpm typecheck` — `tsc --noEmit`
 - `pnpm build` — build de produção (`vite build`)
 - `pnpm preview` — preview do build
 
-Não há suíte de testes nem linter configurado. O CI (`.github/workflows/ci.yml`) roda apenas `pnpm typecheck` e `pnpm build` em push/PR para `main` — trate esses dois comandos como o gate mínimo de validação antes de considerar uma mudança pronta.
+Não há linter configurado. O CI (`.github/workflows/ci.yml`) roda `pnpm test`, `pnpm typecheck` e `pnpm build` em push/PR para `main` — trate os três comandos como o gate mínimo de validação antes de considerar uma mudança pronta.
 
 ## Arquitetura
 
@@ -26,7 +27,8 @@ Não há suíte de testes nem linter configurado. O CI (`.github/workflows/ci.ym
 - **`components/`** — poucos componentes compartilhados extraídos do `App.tsx` (`Sidebar`, `GridCard`, `Marquee`). Novos componentes reutilizáveis devem seguir esse padrão: função nomeada exportada, tipada com `React.FC` e uma interface `*Props` local.
 - **`index.tsx`** — bootstrap padrão do React 19 (`createRoot`), monta `<App />` em `#root`, importa `index.css`.
 - **`index.css`** — tema Tailwind v4 via `@theme` (cores de marca `anhanga-*`, fontes, keyframes de animação). Utilitários customizados (`.grid-card`, `.text-outline`, `.no-scrollbar`) ficam em `@layer components`/CSS puro no mesmo arquivo — não há outro arquivo de estilos.
-- **`types.ts`** — tipos compartilhados mínimos (`ServiceCardProps`, `NavItem`).
+- **`site/siteCatalog.tsx`** — catálogo operacional das páginas reconhecidas: seleção da página, estado editorial, metadata e projeções de navegação.
+- **`types.ts`** — tipos compartilhados mínimos de conteúdo (`ServiceCardProps`).
 - Alias de import `@/*` aponta para a raiz do projeto (configurado em `tsconfig.json` e `vite.config.ts`).
 - Tailwind é integrado via plugin do Vite (`@tailwindcss/vite`), sem `tailwind.config.js` — a configuração de tema vive inteiramente em `index.css`.
 

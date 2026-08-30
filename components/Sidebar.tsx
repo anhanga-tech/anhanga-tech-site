@@ -2,25 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 import { Menu, X, Mail } from 'lucide-react';
 import { InstagramIcon, LinkedinIcon } from './BrandIcons';
-import { NavItem } from '../types';
-
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'Início', href: '/', implemented: true },
-  { label: 'Atendente IA', href: '/atendente-ia' },
-  { label: 'Agendamento', href: '/agendamento' },
-  { label: 'Painel', href: '/painel' },
-  { label: 'Preços', href: '/precos' },
-  { label: 'Consultoria', href: '/consultoria' },
-  { label: 'Materiais', href: '/materiais' },
-  { label: 'Sobre', href: '/sobre' },
-  { label: 'Contato', href: '/contato' },
-];
+import { siteCatalog } from '../site/siteCatalog';
 
 const Sidebar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const navRef = useRef<HTMLElement>(null);
+  const navigationPages = siteCatalog.navigation('primary');
+  const currentPage = siteCatalog.resolve(location.pathname);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -128,18 +118,18 @@ const Sidebar: React.FC = () => {
               </button>
             </div>
             <ul className="flex flex-col gap-2 pb-8">
-              {NAV_ITEMS.map((item) => {
-                const isActive = location.pathname === item.href;
+              {navigationPages.map((page) => {
+                const isActive = currentPage.kind === 'known' && currentPage.canonicalPath === page.path;
                 return (
-                  <li key={item.href}>
+                  <li key={page.path}>
                     <Link
-                      to={item.href}
+                      to={page.path}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block font-display text-3xl md:text-4xl font-black uppercase tracking-tighter py-2 transition-colors ${
                         isActive ? 'text-anhanga-lime' : 'text-white hover:text-anhanga-lime'
                       }`}
                     >
-                      {item.label}
+                      {page.label}
                     </Link>
                   </li>
                 );
